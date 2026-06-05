@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aliyyah Azzahra — Cloud Engineer</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f7f8fa;
+    --white: #ffffff;
+    --dark: #111318;
+    --muted: #6b7280;
+    --border: #e5e7eb;
+    --accent: #2563eb;
+    --accent-light: #eff6ff;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Syne', sans-serif;
+    background: var(--bg);
+    color: var(--dark);
+    line-height: 1.7;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(247,248,250,0.92);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2.5rem;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .nav-logo {
+    font-size: 15px;
+    font-weight: 800;
+    color: var(--dark);
+    letter-spacing: -0.5px;
+  }
+  .nav-logo span { color: var(--accent); }
+  .nav-links { display: flex; gap: 1.75rem; }
+  .nav-links a {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--dark); }
+
+  /* HERO */
+  .hero {
+    margin-top: 56px;
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    padding: 4rem 2.5rem;
+    display: flex;
+    align-items: center;
+    gap: 3.5rem;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 56px;
+  }
+
+  .hero-photo img {
+    width: 160px;
+    height: 160px;
+    border-radius: 16px;
+    object-fit: cover;
+    object-position: center top;
+    border: 1px solid var(--border);
+    display: block;
+    flex-shrink: 0;
+  }
+
+  .hero-info { flex: 1; }
+
+  .hero-role {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--accent);
+    background: var(--accent-light);
+    border: 1px solid #bfdbfe;
+    border-radius: 4px;
+    padding: 3px 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+
+  .hero-info h1 {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--dark);
+    line-height: 1.15;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.5px;
+  }
+
+  .hero-nim {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--muted);
+    margin-bottom: 0.75rem;
+    letter-spacing: 0.3px;
+  }
+
+  .hero-desc {
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--muted);
+    line-height: 1.7;
+    margin-bottom: 1.25rem;
+    max-width: 420px;
+  }
+
+  .hero-contacts { display: flex; flex-wrap: wrap; gap: 8px; }
+
+  .contact-pill {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--dark);
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 5px 12px;
+    text-decoration: none;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .contact-pill:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* LAYOUT */
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2.5rem;
+  }
+
+  /* SECTION */
+  .section { margin-bottom: 3rem; }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 1.5rem;
+  }
+  .section-header h2 {
+    font-size: 13px;
+    font-weight: 800;
+    color: var(--dark);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+  .section-header::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* ABOUT */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  .about-item {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 0.875rem 1rem;
+  }
+  .about-item .lbl {
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--muted);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 2px;
+  }
+  .about-item .val {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--dark);
+  }
+  .about-item a { color: var(--accent); text-decoration: none; }
+  .about-item a:hover { text-decoration: underline; }
+
+  /* SKILLS */
+  .skills-wrap { display: flex; flex-wrap: wrap; gap: 8px; }
+  .skill-group {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 0.875rem 1rem;
+    min-width: 160px;
+    flex: 1;
+  }
+  .skill-group .grp-name {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+  .stag {
+    font-size: 11px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 4px;
+    background: var(--bg);
+    color: var(--dark);
+    border: 1px solid var(--border);
+  }
+
+  /* EXPERIENCE */
+  .exp-list { display: flex; flex-direction: column; gap: 1rem; }
+  .exp-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.25rem;
+    display: flex;
+    gap: 1rem;
+  }
+  .exp-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+    margin-top: 6px;
+    flex-shrink: 0;
+  }
+  .exp-body { flex: 1; }
+  .exp-period { font-size: 11px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 2px; }
+  .exp-role { font-size: 15px; font-weight: 700; color: var(--dark); margin-bottom: 1px; }
+  .exp-company { font-size: 13px; font-weight: 600; color: var(--accent); margin-bottom: 8px; }
+  .exp-desc { font-size: 13px; font-weight: 400; color: var(--muted); line-height: 1.7; margin-bottom: 10px; }
+  .tags { display: flex; flex-wrap: wrap; gap: 5px; }
+  .tag {
+    font-size: 11px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 4px;
+    background: var(--accent-light);
+    color: var(--accent);
+    border: 1px solid #bfdbfe;
+  }
+
+  /* PROJECTS */
+  .proj-list { display: flex; flex-direction: column; gap: 1rem; }
+  .proj-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.25rem;
+  }
+  .proj-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; margin-bottom: 6px; }
+  .proj-card h3 { font-size: 14px; font-weight: 700; color: var(--dark); line-height: 1.4; }
+  .proj-status {
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 20px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .status-done { background: #f0fdf4; color: #16a34a; border: 1px solid #bbf7d0; }
+  .status-wip  { background: var(--accent-light); color: var(--accent); border: 1px solid #bfdbfe; }
+  .proj-card p { font-size: 13px; font-weight: 400; color: var(--muted); line-height: 1.7; margin-bottom: 10px; }
+
+  /* FOOTER */
+  footer {
+    text-align: center;
+    padding: 1.5rem;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--muted);
+    border-top: 1px solid var(--border);
+  }
+
+  /* FADE */
+  .fade-in { opacity: 0; transform: translateY(16px); transition: opacity 0.5s ease, transform 0.5s ease; }
+  .fade-in.visible { opacity: 1; transform: none; }
+
+  @media (max-width: 640px) {
+    nav { padding: 0 1.25rem; }
+    .nav-links { display: none; }
+    .hero { flex-direction: column; padding: 2rem 1.25rem; gap: 1.5rem; }
+    .hero-photo img { width: 110px; height: 110px; border-radius: 12px; }
+    .container { padding: 1.5rem 1.25rem; }
+    .about-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Aliyyah<span>.</span></div>
+  <div class="nav-links">
+    <a href="#about">Tentang</a>
+    <a href="#skills">Skills</a>
+    <a href="#experience">Pengalaman</a>
+    <a href="#projects">Proyek</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-photo">
+    <img src="profile.jpeg" alt="Foto Aliyyah Azzahra Taqi Kusuma">
+  </div>
+  <div class="hero-info">
+    <div class="hero-role">Cloud Engineer</div>
+    <h1>Aliyyah Azzahra<br>Taqi Kusuma</h1>
+    <div class="hero-nim">NIM 2388010046 · Informatika · Universitas Siber Syekh Nurjati Cirebon</div>
+    <p class="hero-desc">
+      Mahasiswa Informatika yang passionate di bidang cloud infrastructure, DevOps, dan otomasi sistem.
+    </p>
+    <div class="hero-contacts">
+      <a class="contact-pill" href="mailto:aliyyahazzahrataqik@gmail.com">Email</a>
+      <a class="contact-pill" href="tel:089531546071">089531546071</a>
+      <a class="contact-pill" href="https://github.com/aliyyahazzahrataqik" target="_blank">GitHub</a>
+      <a class="contact-pill" href="https://www.linkedin.com/in/aliyyah-azzahra-taqi-kusuma-195b012a7" target="_blank">LinkedIn</a>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- ABOUT -->
+  <div class="section fade-in" id="about">
+    <div class="section-header"><h2>Tentang</h2></div>
+    <div class="about-grid">
+      <div class="about-item">
+        <div class="lbl">Nama Lengkap</div>
+        <div class="val">Aliyyah Azzahra Taqi Kusuma</div>
+      </div>
+      <div class="about-item">
+        <div class="lbl">NIM</div>
+        <div class="val">2388010046</div>
+      </div>
+      <div class="about-item">
+        <div class="lbl">Universitas</div>
+        <div class="val">Universitas Siber Syekh Nurjati Cirebon</div>
+      </div>
+      <div class="about-item">
+        <div class="lbl">Jurusan</div>
+        <div class="val">Teknik Informatika</div>
+      </div>
+      <div class="about-item">
+        <div class="lbl">Email</div>
+        <div class="val"><a href="mailto:aliyyahazzahrataqik@gmail.com">aliyyahazzahrataqik@gmail.com</a></div>
+      </div>
+      <div class="about-item">
+        <div class="lbl">GitHub</div>
+        <div class="val"><a href="https://github.com/aliyyahazzahrataqik" target="_blank">aliyyahazzahrataqik</a></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SKILLS -->
+  <div class="section fade-in" id="skills">
+    <div class="section-header"><h2>Skills</h2></div>
+    <div class="skills-wrap">
+      <div class="skill-group">
+        <div class="grp-name">Cloud</div>
+        <div class="skill-tags">
+          <span class="stag">AWS EC2</span><span class="stag">S3</span><span class="stag">GCP</span><span class="stag">Azure</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="grp-name">Container</div>
+        <div class="skill-tags">
+          <span class="stag">Docker</span><span class="stag">Kubernetes</span><span class="stag">Helm</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="grp-name">CI/CD & IaC</div>
+        <div class="skill-tags">
+          <span class="stag">GitHub Actions</span><span class="stag">Terraform</span><span class="stag">Ansible</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="grp-name">OS & Scripting</div>
+        <div class="skill-tags">
+          <span class="stag">Linux</span><span class="stag">Bash</span><span class="stag">Python</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="grp-name">Monitoring</div>
+        <div class="skill-tags">
+          <span class="stag">Grafana</span><span class="stag">Prometheus</span><span class="stag">CloudWatch</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EXPERIENCE -->
+  <div class="section fade-in" id="experience">
+    <div class="section-header"><h2>Pengalaman</h2></div>
+    <div class="exp-list">
+      <div class="exp-card">
+        <div class="exp-dot"></div>
+        <div class="exp-body">
+          <div class="exp-period">Agu 2024 — Jan 2025</div>
+          <div class="exp-role">Cloud Infrastructure Intern</div>
+          <div class="exp-company">PT. Teknologi Nusantara Digital</div>
+          <p class="exp-desc">Membantu tim DevOps dalam deployment aplikasi menggunakan Docker dan AWS EC2. Mengotomasi provisioning server dengan Bash script, memantau uptime menggunakan Grafana, dan berkontribusi dalam konfigurasi CI/CD pipeline.</p>
+          <div class="tags">
+            <span class="tag">AWS</span><span class="tag">Docker</span><span class="tag">Bash</span><span class="tag">Grafana</span><span class="tag">GitHub Actions</span>
+          </div>
+        </div>
+      </div>
+      <div class="exp-card">
+        <div class="exp-dot"></div>
+        <div class="exp-body">
+          <div class="exp-period">Feb 2024 — Jul 2024</div>
+          <div class="exp-role">IT Support & Network Assistant</div>
+          <div class="exp-company">Universitas Siber Syekh Nurjati Cirebon</div>
+          <p class="exp-desc">Mengelola jaringan laboratorium kampus, troubleshooting koneksi, instalasi Linux, dan mendukung kebutuhan infrastruktur teknis di lingkungan akademik.</p>
+          <div class="tags">
+            <span class="tag">Linux</span><span class="tag">Networking</span><span class="tag">IT Support</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROJECTS -->
+  <div class="section fade-in" id="projects">
+    <div class="section-header"><h2>Proyek</h2></div>
+    <div class="proj-list">
+      <div class="proj-card">
+        <div class="proj-top">
+          <h3>Auto-Deploy Pipeline dengan GitHub Actions + AWS</h3>
+          <span class="proj-status status-done">Selesai</span>
+        </div>
+        <p>Pipeline CI/CD otomatis yang men-deploy aplikasi Node.js ke AWS EC2 setiap push ke branch main, dilengkapi notifikasi Slack otomatis.</p>
+        <div class="tags">
+          <span class="tag">GitHub Actions</span><span class="tag">AWS EC2</span><span class="tag">Node.js</span><span class="tag">Nginx</span>
+        </div>
+      </div>
+      <div class="proj-card">
+        <div class="proj-top">
+          <h3>Containerized Microservices dengan Docker Compose</h3>
+          <span class="proj-status status-done">Selesai</span>
+        </div>
+        <p>Arsitektur microservices dengan Docker Compose: API Gateway, Auth Service, dan PostgreSQL, dilengkapi monitoring Prometheus dan Grafana.</p>
+        <div class="tags">
+          <span class="tag">Docker</span><span class="tag">PostgreSQL</span><span class="tag">Prometheus</span><span class="tag">Grafana</span>
+        </div>
+      </div>
+      <div class="proj-card">
+        <div class="proj-top">
+          <h3>Terraform IaC — Provisioning VPC di AWS</h3>
+          <span class="proj-status status-wip">In Progress</span>
+        </div>
+        <p>Otomasi pembuatan infrastruktur AWS dari nol menggunakan Terraform: VPC, subnet, security group, dan EC2. Dikelola sebagai version-controlled infrastructure.</p>
+        <div class="tags">
+          <span class="tag">Terraform</span><span class="tag">AWS VPC</span><span class="tag">EC2</span><span class="tag">IaC</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  Aliyyah Azzahra Taqi Kusuma · NIM 2388010046 · Teknik Informatika · 2025
+</footer>
+
+<script>
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
