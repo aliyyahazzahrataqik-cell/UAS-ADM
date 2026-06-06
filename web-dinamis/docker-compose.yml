@@ -9,18 +9,18 @@ services:
       MARIADB_USER: alyauas046
       MARIADB_PASSWORD: uas123
     volumes:
-      - db_data:/var/lib/mysql
-      - ./db_data/dbcompro.sql:/docker-entrypoint-initdb.d/dbcompro.sql:ro
+      - dbdata:/var/lib/mysql
+      - ./dbdata/dbuas.sql:/docker-entrypoint-initdb.d/dbuas.sql:ro
     restart: always
 
   container-statis:
-    image: ${DOCKERHUB_USERNAME}/compro_2388010046:latest
+    image: ${DOCKERHUB_USERNAME}/uas_aliyyah-azzahra-046:latest
     ports:
       - "80:80"
     restart: always
 
   container-dinamis:
-    image: ${DOCKERHUB_USERNAME}/web-dinamis:latest
+    image: ${DOCKERHUB_USERNAME}/uas_dinamis_alya:latest
     ports:
       - "3000:3000"
     restart: always
