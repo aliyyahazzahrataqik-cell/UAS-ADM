@@ -19,9 +19,12 @@ export default function PromoSection() {
     fetch("/api/coupons")
       .then((res) => res.json())
       .then((data) => {
-        setCoupons(data);
+        setCoupons(Array.isArray(data) ? data : []);
       })
-      .catch((err) => console.error(err))
+      .catch((err) => {
+        console.error("Error loading coupons:", err);
+        setCoupons([]);
+      })
       .finally(() => setLoading(false));
   }, []);
 

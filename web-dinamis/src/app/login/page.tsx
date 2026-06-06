@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 
 export default function LoginPage() {
-  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
@@ -20,12 +20,12 @@ export default function LoginPage() {
     try {
       const res = await signIn("credentials", {
         redirect: false,
-        email,
+        username,
         password,
       });
 
       if (res?.error) {
-        setError("Email atau password salah");
+        setError("Username atau password salah");
       } else {
         router.push("/admin");
         router.refresh();
@@ -80,12 +80,12 @@ export default function LoginPage() {
         <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
           <div>
             <label style={{ display: "block", marginBottom: "6px", fontSize: "13px", color: "var(--text-dim)" }}>
-              Email Address
+              Username
             </label>
             <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              type="text"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
               required
               style={{
                 width: "100%",
@@ -97,7 +97,7 @@ export default function LoginPage() {
                 outline: "none",
                 transition: "all 0.3s"
               }}
-              placeholder="admin@florashop.com"
+              placeholder="admin"
             />
           </div>
 

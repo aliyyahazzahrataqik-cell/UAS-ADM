@@ -9,34 +9,72 @@ export default function HeroSection() {
   useEffect(() => {
     const el = sectionRef.current;
     if (!el) return;
+
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) el.classList.add("hero--visible");
+        if (entry.isIntersecting) {
+          el.classList.add("hero--visible");
+        }
       },
       { threshold: 0.15 }
     );
+
     observer.observe(el);
     return () => observer.disconnect();
   }, []);
 
   return (
-    <section id="hero" className="hero" ref={sectionRef}>
-      <div className="floating-accent" style={{ top: "20%", left: "10%" }} />
-      <div className="floating-accent floating-accent--alt" style={{ bottom: "10%", right: "15%" }} />
+    <section id="hero" className="hero-split" ref={sectionRef}>
+      <div className="hero-split__content">
+        <span className="hero-tagline">✨ Rangkaian Bunga Premium ✨</span>
 
-      <span className="hero-tagline">FloraShop Exclusive</span>
-      <h1 className="hero-title">
-        SAMPAIKAN PESANMU
-        <br />
-        <span className="hero-title--gradient">DENGAN BUNGA</span>
-      </h1>
-      <p className="hero-description">
-        Rangkaian bunga segar berkualitas premium untuk setiap momen spesial Anda. 
-        Mulai dari buket romantis, bunga papan ucapan, hingga dekorasi meja yang elegan.
-      </p>
-      <Link href="/produk" className="cta-button">
-        LIHAT KOLEKSI KAMI
-      </Link>
+        <h1 className="hero-title">
+          UNGKAPKAN PERASAANMU
+          <br />
+          <span className="hero-title--gradient">DENGAN BUNGA INDAH</span>
+        </h1>
+
+        <p className="hero-description">
+          Koleksi bunga eksklusif yang dirancang khusus untuk momen spesial Anda.
+          Dari buket romantis hingga dekorasi elegan, dirangkai dengan sepenuh hati.
+        </p>
+
+        <div className="hero-actions">
+          <Link href="/produk" className="cta-button">
+            JELAJAHI KOLEKSI
+          </Link>
+          <Link href="#featured" className="cta-button cta-button--gold">
+            LIHAT BESTSELLER
+          </Link>
+        </div>
+
+        {/* Flower badges */}
+        <div className="hero-badges">
+          <div className="hero-badge">
+            <div className="hero-badge__icon">🌸</div>
+            <div className="hero-badge__text">Bunga Segar</div>
+          </div>
+          <div className="hero-badge">
+            <div className="hero-badge__icon">🚚</div>
+            <div className="hero-badge__text">Pengiriman Cepat</div>
+          </div>
+          <div className="hero-badge">
+            <div className="hero-badge__icon">❤️</div>
+            <div className="hero-badge__text">Kualitas Premium</div>
+          </div>
+        </div>
+      </div>
+
+      <div className="hero-split__image">
+        <div className="hero-image-wrapper">
+          <img 
+            src="/images/hero_flower_1.png" 
+            alt="Beautiful Premium Peonies"
+            className="hero-main-img"
+          />
+          <div className="hero-image-backdrop"></div>
+        </div>
+      </div>
     </section>
   );
 }

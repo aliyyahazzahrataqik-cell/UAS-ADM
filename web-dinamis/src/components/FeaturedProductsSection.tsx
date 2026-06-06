@@ -22,9 +22,12 @@ export default function FeaturedProductsSection() {
     fetch("/api/products?featured=1&limit=4")
       .then((res) => res.json())
       .then((data) => {
-        setProducts(data);
+        setProducts(Array.isArray(data) ? data : []);
       })
-      .catch((err) => console.error(err))
+      .catch((err) => {
+        console.error("Error loading products:", err);
+        setProducts([]);
+      })
       .finally(() => setLoading(false));
   }, []);
 
