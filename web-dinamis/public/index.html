@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Florist Shop - Toko Bunga Online</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container">
+      <div class="logo">🌸 Florist Shop</div>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#products">Produk</a></li>
+        <li><a href="#cart" class="cart-icon">🛒 Cart (<span id="cart-count">0</span>)</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section id="home" class="hero">
+    <div class="hero-content">
+      <h1>Toko Bunga Premium</h1>
+      <p>Bunga segar berkualitas tinggi untuk setiap momen spesial Anda</p>
+      <button onclick="scrollTo('#products')" class="cta-btn">Lihat Produk</button>
+    </div>
+  </section>
+
+  <section id="categories" class="categories">
+    <div class="container">
+      <h2>Kategori Produk</h2>
+      <div id="categories-list" class="categories-grid"></div>
+    </div>
+  </section>
+
+  <section id="products" class="products">
+    <div class="container">
+      <h2>Produk Terbaru</h2>
+      <div id="products-list" class="products-grid"></div>
+    </div>
+  </section>
+
+  <section id="cart" class="cart-section">
+    <div class="container">
+      <h2>Keranjang Belanja</h2>
+      <div id="cart-items" class="cart-items"></div>
+      <div class="cart-summary">
+        <div>Subtotal: <strong id="subtotal">Rp 0</strong></div>
+        <div>Ongkos Kirim: <strong id="shipping">Rp 0</strong></div>
+        <div class="coupon-section">
+          <input type="text" id="coupon-code" placeholder="Kode Kupon">
+          <button onclick="applyCoupon()">Terapkan</button>
+          <div id="discount-info"></div>
+        </div>
+        <div class="total">Total: <strong id="total">Rp 0</strong></div>
+        <button onclick="checkout()" class="checkout-btn">Checkout</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="checkout" class="checkout-section" style="display:none;">
+    <div class="container">
+      <h2>Checkout</h2>
+      <form id="checkout-form">
+        <div class="form-group">
+          <label>Nama Penerima:</label>
+          <input type="text" name="recipient_name" required>
+        </div>
+        <div class="form-group">
+          <label>Telepon:</label>
+          <input type="tel" name="recipient_phone" required>
+        </div>
+        <div class="form-group">
+          <label>Alamat:</label>
+          <textarea name="address_street" required></textarea>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Kota:</label>
+            <input type="text" name="address_city" required>
+          </div>
+          <div class="form-group">
+            <label>Provinsi:</label>
+            <input type="text" name="address_province" required>
+          </div>
+          <div class="form-group">
+            <label>Kode Pos:</label>
+            <input type="text" name="address_postal" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Tanggal Pengiriman:</label>
+          <input type="date" name="delivery_date" required>
+        </div>
+        <div class="form-group">
+          <label>Jam Pengiriman:</label>
+          <select name="delivery_time" required>
+            <option value="">Pilih Jam</option>
+            <option value="08:00-12:00">08:00 - 12:00</option>
+            <option value="12:00-16:00">12:00 - 16:00</option>
+            <option value="16:00-20:00">16:00 - 20:00</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Pesan Kartu:</label>
+          <textarea name="card_message" placeholder="Tulis pesan untuk penerima..."></textarea>
+        </div>
+        <button type="submit" class="checkout-btn">Konfirmasi Pesanan</button>
+        <button type="button" onclick="cancelCheckout()" class="cancel-btn">Batal</button>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2024 Florist Shop. All rights reserved.</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

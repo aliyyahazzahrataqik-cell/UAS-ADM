@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import Link from "next/link";
 
 export default function HeroSection() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -23,20 +24,19 @@ export default function HeroSection() {
       <div className="floating-accent" style={{ top: "20%", left: "10%" }} />
       <div className="floating-accent floating-accent--alt" style={{ bottom: "10%", right: "15%" }} />
 
-      <span className="hero-tagline">Architecting the Digital Realm</span>
+      <span className="hero-tagline">FloraShop Exclusive</span>
       <h1 className="hero-title">
-        MEMBANGUN MASA DEPAN
+        SAMPAIKAN PESANMU
         <br />
-        <span className="hero-title--gradient">DENGAN TEKNOLOGI</span>
+        <span className="hero-title--gradient">DENGAN BUNGA</span>
       </h1>
       <p className="hero-description">
-        DigiTech menghadirkan solusi visioner melampaui batas imajinasi. Kami
-        adalah partner strategis Anda dalam akselerasi transformasi digital
-        global.
+        Rangkaian bunga segar berkualitas premium untuk setiap momen spesial Anda. 
+        Mulai dari buket romantis, bunga papan ucapan, hingga dekorasi meja yang elegan.
       </p>
-      <a href="#services" className="cta-button">
-        JELAJAHI SOLUSI
-      </a>
+      <Link href="/produk" className="cta-button">
+        LIHAT KOLEKSI KAMI
+      </Link>
     </section>
   );
 }

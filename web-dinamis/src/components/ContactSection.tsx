@@ -29,20 +29,20 @@ export default function ContactSection() {
         Hubungi <span className="text-gradient">Kami</span>
       </h2>
       <p className="section-subtitle">
-        Ada pertanyaan atau ingin berdiskusi tentang proyek Anda? Kami siap membantu.
+        Ada pertanyaan tentang pesanan, kustomisasi buket, atau kerjasama? Kami siap membantu dengan sepenuh hati.
       </p>
 
       <form className="contact-form" onSubmit={handleSubmit}>
         <div className="form-row">
           <div className="form-group">
-            <label htmlFor="nama">Nama</label>
+            <label htmlFor="nama">Nama Lengkap</label>
             <input
               id="nama"
               type="text"
               required
               value={form.nama}
               onChange={(e) => setForm({ ...form, nama: e.target.value })}
-              placeholder="Nama lengkap Anda"
+              placeholder="Contoh: Budi Santoso"
             />
           </div>
           <div className="form-group">
@@ -53,42 +53,42 @@ export default function ContactSection() {
               required
               value={form.email}
               onChange={(e) => setForm({ ...form, email: e.target.value })}
-              placeholder="email@contoh.com"
+              placeholder="budi@email.com"
             />
           </div>
         </div>
         <div className="form-group">
-          <label htmlFor="subjek">Subjek</label>
+          <label htmlFor="subjek">Subjek Pesan</label>
           <input
             id="subjek"
             type="text"
             required
             value={form.subjek}
             onChange={(e) => setForm({ ...form, subjek: e.target.value })}
-            placeholder="Topik pembicaraan"
+            placeholder="Contoh: Custom Buket Pernikahan"
           />
         </div>
         <div className="form-group">
-          <label htmlFor="pesan">Pesan</label>
+          <label htmlFor="pesan">Detail Pesan</label>
           <textarea
             id="pesan"
             rows={5}
             required
             value={form.pesan}
             onChange={(e) => setForm({ ...form, pesan: e.target.value })}
-            placeholder="Ceritakan kebutuhan Anda..."
+            placeholder="Tuliskan pertanyaan atau kebutuhan detail Anda di sini..."
           />
         </div>
 
-        <button type="submit" className="cta-button" disabled={status === "sending"}>
-          {status === "sending" ? "MENGIRIM..." : "KIRIM PESAN"}
+        <button type="submit" className="cta-button" disabled={status === "sending"} style={{ width: "100%" }}>
+          {status === "sending" ? "MENGIRIM PESAN..." : "KIRIM PESAN SEKARANG"}
         </button>
 
         {status === "ok" && (
-          <p className="form-msg form-msg--ok">✅ Pesan terkirim! Kami akan segera menghubungi Anda.</p>
+          <p className="form-msg form-msg--ok">✅ Pesan terkirim! Tim FloraShop akan segera membalas email Anda.</p>
         )}
         {status === "error" && (
-          <p className="form-msg form-msg--err">❌ Gagal mengirim pesan. Silakan coba lagi.</p>
+          <p className="form-msg form-msg--err">❌ Gagal mengirim pesan. Silakan coba beberapa saat lagi.</p>
         )}
       </form>
     </section>

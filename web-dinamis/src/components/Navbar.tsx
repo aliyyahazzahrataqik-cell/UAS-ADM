@@ -5,9 +5,9 @@ import Link from "next/link";
 
 const NAV_ITEMS = [
   { label: "Beranda", href: "/#hero" },
-  { label: "Layanan", href: "/#services" },
-  { label: "Berita", href: "/berita" },
-  { label: "Visi", href: "/#vision" },
+  { label: "Kategori", href: "/#categories" },
+  { label: "Produk", href: "/produk" },
+  { label: "Promo", href: "/#promo" },
   { label: "Kontak", href: "/#contact" },
 ];
 
@@ -24,7 +24,7 @@ export default function Navbar() {
   return (
     <nav className={`navbar ${scrolled ? "navbar--scrolled" : ""}`}>
       <Link href="/" className="logo">
-        DigiTech
+        FloraShop
       </Link>
 
       {/* Desktop */}

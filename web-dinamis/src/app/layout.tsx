@@ -7,9 +7,9 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const outfit = Outfit({ subsets: ["latin"], weight: ["300", "400", "600", "800"], variable: "--font-outfit" });
 
 export const metadata: Metadata = {
-  title: "DigiTech | Architecting the Future",
-  description: "Membangun masa depan dengan teknologi. Partner strategis Anda dalam akselerasi transformasi digital global.",
-  keywords: ["tech", "ai", "cloud", "cybersecurity", "software"],
+  title: "FloraShop | Toko Bunga Online Terpercaya",
+  description: "FloraShop menyediakan berbagai rangkaian bunga segar berkualitas untuk setiap momen spesial Anda. Buket bunga, bunga papan, hand bouquet, dan hamper bunga.",
+  keywords: ["toko bunga", "buket bunga", "florist", "bunga papan", "hand bouquet", "rangkaian bunga"],
 };
 
 export default function RootLayout({
