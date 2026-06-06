@@ -1,0 +1,50 @@
+name: Deploy Web Dinamis to AWS EC2
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'web-dinamis/**'
+      - '.github/workflows/deploy_web_dinamis.yml'
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy-web-dinamis:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: ./web-dinamis
+          file: ./web-dinamis/Dockerfile
+          push: true
+          no-cache: true
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/uas_dinamis_alya:latest
+
+  deploy-to-ec2:
+    runs-on: ubuntu-latest
+    needs: build-and-deploy-web-dinamis
+    steps:
+      - name: Deploy Web Dinamis via SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.AWS_HOST }}
+          username: ${{ secrets.AWS_USERNAME }}
+          key: ${{ secrets.AWS_PRIVATE_KEY }}
+          port: 22
+          script: |
+            cd /home/ubuntu/container-dinamis/uas_dinamis_alya
+            docker pull aliyyah1901/uas_dinamis_alya:latest
+            DOCKERHUB_USERNAME=aliyyah1901 docker compose up -d --force-recreate --no-deps container-dinamis
+            docker image prune -af
+            echo "=== Status ==="
+            docker ps
