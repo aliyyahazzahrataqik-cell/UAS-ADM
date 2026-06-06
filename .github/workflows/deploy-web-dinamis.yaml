@@ -5,7 +5,7 @@ on:
     branches: [ main ]
     paths:
       - 'web-dinamis/**'
-      - '.github/workflows/deploy_web_dinamis.yml'
+      - '.github/workflows/deploy-web-dinamis.yml'
   workflow_dispatch:
 
 jobs:
@@ -16,13 +16,13 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Login to Docker Hub
-        uses: docker/login-action@v4
+        uses: docker/login-action@v3
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Build and push Docker image
-        uses: docker/build-push-action@v6
+        uses: docker/build-push-action@v5
         with:
           context: ./web-dinamis
           file: ./web-dinamis/Dockerfile
@@ -34,20 +34,6 @@ jobs:
     runs-on: ubuntu-latest
     needs: build-and-deploy-web-dinamis
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Copy docker-compose to EC2
-        uses: appleboy/scp-action@v0.1.7
-        with:
-          host: ${{ secrets.AWS_HOST }}
-          username: ${{ secrets.AWS_USERNAME }}
-          key: ${{ secrets.AWS_PRIVATE_KEY }}
-          port: 22
-          source: "web-dinamis/docker-compose.yml"
-          target: "/home/ubuntu/container-dinamis/uas_dinamis_alya"
-          strip_components: 1
-
       - name: Deploy Web Dinamis via SSH
         uses: appleboy/ssh-action@v1.0.3
         with:
