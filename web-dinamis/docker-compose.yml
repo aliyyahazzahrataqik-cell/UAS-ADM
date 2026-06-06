@@ -35,4 +35,4 @@ services:
       - db-webdinamis
 
 volumes:
-  db_data: {}
+  dbdata: {}
