@@ -30,7 +30,7 @@ services:
       DB_NAME: dbuas
       DB_HOST: db-webdinamis
       NEXTAUTH_SECRET: Aliyyah-Azzahra-Taqi-Kusuma-046
-      NEXTAUTH_URL: http://54.252.28.152:3000
+      NEXTAUTH_URL: http://47.131.250.223/:3000
     depends_on:
       - db-webdinamis
 
