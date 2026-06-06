@@ -5,9 +5,9 @@ services:
     image: mariadb:latest
     environment:
       MARIADB_ROOT_PASSWORD: password!123
-      MARIADB_DATABASE: dbcompro
-      MARIADB_USER: userwebdinamis_2388010046
-      MARIADB_PASSWORD: GwU0YsdRpzkmKLO[
+      MARIADB_DATABASE: dbuas
+      MARIADB_USER: alyauas046
+      MARIADB_PASSWORD: uas123
     volumes:
       - db_data:/var/lib/mysql
       - ./db_data/dbcompro.sql:/docker-entrypoint-initdb.d/dbcompro.sql:ro
@@ -25,9 +25,9 @@ services:
       - "3000:3000"
     restart: always
     environment:
-      DB_USER: userwebdinamis_2388010046
-      DB_PASSWORD: GwU0YsdRpzkmKLO[
-      DB_NAME: dbcompro
+      DB_USER: alyauas046
+      DB_PASSWORD: uas123
+      DB_NAME: dbuas
       DB_HOST: db-webdinamis
       NEXTAUTH_SECRET: Aliyyah-Azzahra-Taqi-Kusuma-046
       NEXTAUTH_URL: http://54.252.28.152:3000
