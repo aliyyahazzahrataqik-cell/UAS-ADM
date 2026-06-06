@@ -1,4 +1,4 @@
-name: Deploy Web Dinamis To AWS EC2
+name: Deploy Web Dinamis to AWS EC2
 
 on:
   push:
