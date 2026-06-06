@@ -13,9 +13,6 @@ RUN npm install
 # Copy source code
 COPY . .
 
-# Set placeholder NEXTAUTH_URL saat build (akan di-override saat runtime)
-ENV NEXTAUTH_URL=http://localhost:3000
-
 # Build Next.js
 RUN npm run build
 
