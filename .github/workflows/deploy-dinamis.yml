@@ -39,7 +39,7 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: ./web-dinamis
-          file: ./web-dinamis/static/Dockerfile
+          file: ./web-dinamis/Dockerfile
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/uas_dinamis_alya:latest
 
