@@ -34,7 +34,6 @@ ENV PORT=3000
 COPY --from=builder /app/.next/standalone ./
 COPY --from=builder /app/.next/static ./.next/static
 COPY --from=builder /app/public ./public
-COPY --from=builder /app/server.js ./server.js
 
 # Expose port
 EXPOSE 3000
