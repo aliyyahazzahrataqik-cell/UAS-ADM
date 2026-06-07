@@ -5,7 +5,7 @@ on:
     branches: [ main ]
     paths:
       - 'web-dinamis/**'
-      - '.github/workflows/deploy_web_dinamis.yml'
+      - '.github/workflows/deploy-dinamis.yml'
   workflow_dispatch:
 
 jobs:
