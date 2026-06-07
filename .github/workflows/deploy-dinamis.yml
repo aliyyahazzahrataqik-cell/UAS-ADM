@@ -57,7 +57,7 @@ jobs:
           port: 22
           script: |
             cd /home/ubuntu/container-dinamis
-            docker compose down -v
+            docker compose down
             DOCKERHUB_USERNAME=aliyyah1901 docker compose pull
             DOCKERHUB_USERNAME=aliyyah1901 docker compose up -d
             docker image prune -af
