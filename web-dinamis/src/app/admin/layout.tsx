@@ -118,7 +118,7 @@ function AdminShell({ children }: { children: React.ReactNode }) {
             </div>
           </div>
           <button className="admin-logout-btn" onClick={() => signOut({ callbackUrl: "/login" })}>
-            <LogoutIcon /> Logout
+            <LogoutIcon /> Logoutt
           </button>
         </div>
       </aside>
