@@ -11,7 +11,7 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "FloraShop | Toko Bunga Online Premium",
+  title: "Aliyyah | Toko Bunga Online Premium",
   description: "FloraShop menyediakan rangkaian bunga segar berkualitas premium untuk setiap momen spesial Anda. Buket bunga, bunga papan, hand bouquet, dan hamper bunga dengan pengiriman cepat.",
   keywords: ["toko bunga", "buket bunga", "florist", "bunga papan", "hand bouquet", "rangkaian bunga"],
 };
