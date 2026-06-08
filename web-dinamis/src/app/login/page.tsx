@@ -141,10 +141,10 @@ export default function LoginPage() {
               transition: "opacity 0.3s"
             }}
           >
-            {loading ? "MEMPROSES..." : "MASUK"}
+            {loading ? "MEMPROSES..." : "Login"}
           </button>
         </form>
-        
+
         <div style={{ textAlign: "center", marginTop: "24px" }}>
           <Link href="/" style={{ color: "var(--text-dim)", textDecoration: "none", fontSize: "13px" }}>
             &larr; Kembali ke Website
