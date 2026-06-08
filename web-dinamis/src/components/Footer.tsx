@@ -5,7 +5,7 @@ export default function Footer() {
     <footer className="footer">
       <div className="footer-inner">
         <div className="footer-brand">
-          <Link href="/" className="logo">FloraShop</Link>
+          <Link href="/" className="logo">ALIYYAH CANTIK</Link>
           <p className="footer-tagline">Rangkaian Bunga Segar & Eksklusif</p>
         </div>
         <div className="footer-links">
